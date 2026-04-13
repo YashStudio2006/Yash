@@ -1,0 +1,212 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Google Sans Flex", sans-serif ;
+}
+body{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: center;
+    min-height: 100vh;
+    background: skyblue;
+}
+
+.container{
+    width: 850px;
+    background: white;
+    display: flex;
+    gap: 70px;
+    align-items: flex-start;
+    padding: 60px 40px;
+    border-radius: 10px;
+}
+
+.hangman-box img{
+    max-width: 270px;
+}
+
+.hangman-box h1{
+    font-size: 1.45rem;
+    margin-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.word-display{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-display .letter{
+    width: 28px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    border-bottom: 3px solid black;
+}
+
+.word-display .letter.guessed{
+    border-color: transparent;
+    margin: -40px 0 35px;
+}
+
+.game-box h4{
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.game-box h4 b{
+    font-weight: 600;
+}
+
+.game-box .guesses-text{
+    color: orangered;
+}
+
+.game-box .keyboard{
+    display: flex;
+    gap: 5px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+:where(.game-modal , .keyboard ) button{
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    background: blue;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.keyboard button {
+  min-width: 40px;
+  min-height: 40px;
+  margin: 5px;
+  padding: 12px 15px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+
+.keyboard button[disabled]{
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+:where(.game-modal , .keyboard ) button:hover {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    transform: scale(1.15) rotate(-2deg);                  
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);                
+    color: #fffacd;                                        
+}
+
+.game-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    padding: 0 10px;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    transition: opacity 0.4s ease;
+}
+
+.game-modal.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-modal .content{
+    background: white;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.game-modal img{
+    max-width: 130px;
+    margin-bottom: 20px;
+}
+
+.game-modal h4{
+    font-size: 1.53rem;
+}
+
+.game-modal p{
+    font-size: 1.15rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+}
+
+.game-modal p b{
+    color: blue;
+    font-weight: 600;
+}
+
+.game-modal button{
+    padding: 12px 23px;
+}
+
+.key {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media(max-width: 782px){
+    .container{
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+
+    .hangman-box img{
+        max-width: 200px;
+    }
+
+    .hangman-box h1{
+        display: none;
+    }
+}
+
+@media(max-width: 480px){
+  /* phone adjustments */
+  .container {
+    gap: 20px;
+    padding: 20px 10px;
+  }
+  .hangman-box img {
+    max-width: 150px;
+  }
+  .word-display .letter {
+    font-size: 1.5rem;
+    width: 22px;
+  }
+  .keyboard button {
+    flex: 1 0 20%;
+    padding: 12px;
+    font-size: 1.2rem;
+  }
+}
